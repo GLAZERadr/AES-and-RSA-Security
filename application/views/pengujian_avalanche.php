@@ -53,13 +53,14 @@
 							
 						<tbody>
 							<?php
+                            $no=1;
                                 foreach ($data_avaeff as $hasil){
                                     echo "<tr>";
-                                    echo "<td>" . $hasil['id_avalanche'] . "</td>";
+                                    echo "<td>" . $no++ . "</td>";
                                     echo "<td>" . $hasil['input_koordinat'] . "</td>";
-                                    echo "<td>" . $hasil['ciphertext_input'] . "</td>";
+                                    echo "<td>" . $hybridCrypto->getCipherText($hasil['ciphertext_input']) . "</td>";
                                     echo "<td>" . $hasil['input_modifikasi'] . "</td>";
-                                    echo "<td>" . $hasil['ciphertext_input_modif'] . "</td>";
+                                    echo "<td>" . $hybridCrypto->getCipherText($hasil['ciphertext_input_modif']) . "</td>";
                                     echo "<td>" . $hasil['perbedaan_cipher'] . "</td>";
                                     echo "<td>" . $hasil['persentase_perbedaan'] . "</td>";
                                     echo"</tr>";

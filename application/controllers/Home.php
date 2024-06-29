@@ -59,7 +59,7 @@ class Home extends CI_Controller
 		$this->load->view('modal');
     }
 
-	public function prosesEnkripsi() 
+	public function prosesEnkripsi($id=NULL) 
 	{
 		$lat = $this->input->post('latitude');
 		$long = $this->input->post('longitude');
@@ -71,6 +71,7 @@ class Home extends CI_Controller
 		$encrypted_long = $this->hybridCrypto->encryptData($long, $secret_key);
 
 		$data = array(
+			'id' => $id,
 			'lat_enkrip' => $encrypted_lat,
 			'long_enkrip' => $encrypted_long
 		);
@@ -96,12 +97,14 @@ class Home extends CI_Controller
     {
 		$data['title'] = 'Halaman Form Dekripsi Secret Key dan Data Lokasi ';
 		$data['data_enkripsi'] = $this->DataLokasiModel->getDataLokasiEnkripById($id)->row();
+		$data['hybridCrypto'] = $this->hybridCrypto;
+
         $this->load->view('template');
 		$this->load->view('form_dekripsi', $data);
 		$this->load->view('modal');
     }
 
-	public function prosesDekripsi() 
+	public function prosesDekripsi($id=NULL) 
 	{
 		$lat = $this->input->post('latitude');
 		$long = $this->input->post('longitude');
@@ -114,6 +117,7 @@ class Home extends CI_Controller
 		log_message('debug', 'Data received: decrypted_lat=' . $decrypted_lat . ', decrypted_long=' . $decrypted_long);
 
 		$data = array(
+			'id' => $id,
 			'lat_dekrip' => $decrypted_lat,
 			'long_dekrip' => $decrypted_long
 		);

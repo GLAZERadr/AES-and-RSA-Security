@@ -22,6 +22,8 @@ class Pengujian extends CI_Controller {
     {
 		$data['title'] = 'Halaman Form Pengujian Avalanche Effect ';
 		$data['data_avaeff'] = $this->PengujianModel->dataAvaeff();
+		$data['hybridCrypto'] = $this->hybridCrypto;
+		
         $this->load->view('template');
 		$this->load->view('pengujian_avalanche', $data);
 		$this->load->view('modal');
@@ -110,6 +112,7 @@ class Pengujian extends CI_Controller {
 
 		//push to database
 		$data = array(
+			'id_entrophy' => $id,
 			'lat_en' => $lat_en,
 			'long_en' => $long_en,
 			'secret_key' => $secret_key,

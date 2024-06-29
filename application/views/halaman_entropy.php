@@ -23,10 +23,11 @@
 							
                             <tbody>
 							<?php
+                            $no=1;
                                 foreach ($data_enkripsi->result() as $row) {
 									$ujiEntropy = '<a href="' . site_url("Pengujian/PengujianEntropy/" . $row->id) . '" class="btn btn-info mb-1">Pengujian Entropy</a>';
                                     echo "<tr>";
-                                    echo "<td>" . $row->id . "</td>";
+                                    echo "<td>" . $no++ . "</td>";
                                     echo "<td>" . $hybridCrypto->getCipherText($row->lat_enkrip) . "</td>";
                                     echo "<td>" . $hybridCrypto->getCipherText($row->long_enkrip) . "</td>";
 									echo "<td>" . $hybridCrypto->getSecretKey($row->lat_enkrip) . "</td>";

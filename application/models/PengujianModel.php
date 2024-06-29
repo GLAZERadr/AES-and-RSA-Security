@@ -41,6 +41,14 @@ class PengujianModel extends CI_Model
         return $query->row_array();
     }
 
+    public function hitungRataPerforma() {
+        $this->db->select_avg('waktu_tanpa_algo', 'rata_performa_tanpa_algo');
+        $this->db->select_avg('waktu_dengan_algo', 'rata_performa_dengan_algo');
+        $this->db->select_avg('peningkatan', 'rata_peningkatan');
+        $query = $this->db->get('performa_sistem');
+        return $query->row_array();
+    }
+
     public function dataPerforma()
     {
         return $this->db->get('performa_sistem')->result_array();

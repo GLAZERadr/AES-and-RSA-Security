@@ -51,9 +51,10 @@
 							
                             <tbody>
 							<?php
+                                $no=1;
                                 foreach ($data_performa as $hasil){
                                     echo "<tr>";
-                                    echo "<td>" . $hasil['id_performa'] . "</td>";
+                                    echo "<td>" . $no++ . "</td>";
                                     echo "<td>" . $hasil['banyak_data'] . "</td>";
                                     echo "<td>" . $hasil['waktu_tanpa_algo'] . "</td>";
                                     echo "<td>" . $hasil['waktu_dengan_algo'] . "</td>";
@@ -62,6 +63,16 @@
                                 }
                             ?>
                             </tbody>
+                            <?php $rata_rata = $this->PengujianModel->hitungRataPerforma(); ?>
+                            <thead>
+                                <tr>
+                                    <td>Rata-rata</td>
+                                    <td></td>
+                                    <td><?php echo isset($rata_rata['rata_performa_tanpa_algo']) ? round($rata_rata['rata_performa_tanpa_algo'], 2) : ''; ?></td>
+                                    <td><?php echo isset($rata_rata['rata_performa_dengan_algo']) ? round($rata_rata['rata_performa_dengan_algo'], 2) : ''; ?></td>
+                                    <td><?php echo isset($rata_rata['rata_peningkatan']) ? round($rata_rata['rata_peningkatan'], 2) : ''; ?></td>
+                                </tr>
+                            </thead>
                         </table>
                     </div>
                 </div>

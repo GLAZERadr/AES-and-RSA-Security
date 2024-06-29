@@ -5,7 +5,7 @@
             <h6 class="m-0 font-weight-bold ">Form Enkripsi Data Lokasi dan Secret Key</h6>
         </div>
         <div class="card-body">
-            <form class="user" method="post" action="<?= site_url('Home/prosesEnkripsi') ?>" enctype="multipart/form-data">
+            <form class="user" method="post" action="<?= site_url('Home/prosesEnkripsi/' . $datalokasi->id) ?>" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label>Latitude</label>
                     <input type="text" class="form-control" name="latitude" id="latitude" value="<?= $datalokasi->latitude ?>" readonly required>
